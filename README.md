@@ -90,6 +90,8 @@ Remember to grab the address of the app in this point
 ## Setting the allowed hosts
 * include your address at the ALLOWED_HOSTS directives in settings.py - Just the domain, make sure that you will take the protocol and slashes from the string
 EX in settings.py :ALLOWED_HOSTS = ['domain.herokuapp.com']
+OBS: em DEV coloque no settings assim sempre que for desenvolver depois do deploy:
+ALLOWED_HOSTS = ['nome-da-app.herokuapp.com', 'localhost']
 
 ## Heroku install config plugin
 * heroku plugins:install heroku-config
