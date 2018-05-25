@@ -34,7 +34,7 @@ Minimal configuration to host a Django project at Heroku
 * pip install python-decouple
 * create an .env file at the root path and insert the following variables
 - SECRET_KEY=Your$eCretKeyHere (Get this secrety key from the settings.py)
-- DEBUG=True
+- DEBUG=True  (OBS: Atenção pois não deve haver espaço entre o sinal de igual) 
 
 ### Settings.py
 * from decouple import config
@@ -70,10 +70,14 @@ pip freeze > requirements-dev.txt
 ## Create a file requirements.txt file and include reference to previows file and add two more requirements
 * -r requirements-dev.txt
 * gunicorn
-* psycopg2
+* psycopg2 (Obs: Este deve estar instalado na máquina antes de gerar o requirements.txt)
 
 ## Create a file Procfile and add the following code
-* web: gunicorn website.wsgi --log-file -
+* web: gunicorn nome_da_aplicacao.wsgi --log-file -
+EX: web: gunicorn gestao_clientes.wsgi --log-file -
+
+Senão um erro ocorrerá no log do Heroku:
+ModuleNotFoundError: No module named 'website'
 
 ## Create a file runtime.txt and add the following core
 * python-3.6.0
@@ -85,13 +89,13 @@ Remember to grab the address of the app in this point
 
 ## Setting the allowed hosts
 * include your address at the ALLOWED_HOSTS directives in settings.py - Just the domain, make sure that you will take the protocol and slashes from the string
+EX in settings.py :ALLOWED_HOSTS = ['domain.herokuapp.com']
 
 ## Heroku install config plugin
 * heroku plugins:install heroku-config
 
-### Sending configs from .env to Heroku ( You have to be inside tha folther where .env files is)
-* heroku plugins:install heroku-config
-* heroku config:push -a
+### Sending configs from .env to Heroku ( Este aquivo .env deve estar no diretório raiz do projeto)
+* heroku config:push
 
 ### To show heroku configs do
 * heroku config 
