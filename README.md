@@ -105,6 +105,10 @@ EX in settings.py :ALLOWED_HOSTS = ['domain.herokuapp.com']
 * git commit -m 'Configuring the app'
 * git push heroku master --force
 
+OBS:Collectstatic error while deploying Django app to Heroku
+Error while running '$ python manage.py collectstatic --noinput'. in heroku
+solução: $ heroku config:set DISABLE_COLLECTSTATIC=1
+
 ## Creating the data base
 * heroku run python3 manage.py migrate
 
