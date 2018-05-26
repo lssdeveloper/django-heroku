@@ -64,8 +64,28 @@ pip install dj-static
 ### Settings.py
 * STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Extra places for collectstatic to find static files.
+* STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+* STATIC_URL = '/static/'
+
+* STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 ## Create a requirements-dev.txt
 pip freeze > requirements-dev.txt
+
+*obs:Retirar gunicorn e psycopg2==2.7.4
+
+## Instalar o Whitenoise como indicado no link abaixo devido a problemas com arquivos estáticos
+
+* https://devcenter.heroku.com/articles/django-assets
+* Instalar o whitenoise==3.3.1 e incluir no Settings.py
+
+*STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 ## Create a file requirements.txt file and include reference to previows file and add two more requirements
 * -r requirements-dev.txt
